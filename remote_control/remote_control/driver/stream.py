@@ -22,7 +22,7 @@ MJPG_STREAMER_PATH = "mjpg_streamer"
 INPUT_PATH = "/usr/local/lib/input_uvc.so"
 VIDEO_PATH = "videos/"
 
-os.makedirs(VIDEO_PATH)
+os.makedirs(VIDEO_PATH,exist_ok=True)
 
 SAVE_PATH = "/usr/local/lib/output_file.so -f" + VIDEO_PATH +"-d 1"
 OUTPUT_PATH = "/usr/local/lib/output_http.so -w /usr/local/www "
