@@ -14,14 +14,20 @@
 import tempfile
 import subprocess
 import os
+import glob
 
 _CODE_DIR_ = "/home/pi/SunFounder_PiCar-V"
 
 MJPG_STREAMER_PATH = "mjpg_streamer"
 INPUT_PATH = "/usr/local/lib/input_uvc.so"
-OUTPUT_PATH = "/usr/local/lib/output_http.so -w /usr/local/www"
+VIDEO_PATH = "/home/videos/"
 
-stream_cmd = '%s -i "%s" -o "%s" &' % (MJPG_STREAMER_PATH, INPUT_PATH, OUTPUT_PATH)
+os.mkdirs(VIDEO_PATH)
+
+SAVE_PATH = "/usr/local/lib/output_file.so -f" + VIDEO_PATH +"-d 1"
+OUTPUT_PATH = "/usr/local/lib/output_http.so -w /usr/local/www "
+
+stream_cmd = '%s -i "%s" -o "%s" -o "%s"&' % (MJPG_STREAMER_PATH, INPUT_PATH, OUTPUT_PATH,SAVE_PATH)
 
 def run_command(cmd):
 	with tempfile.TemporaryFile() as f:
