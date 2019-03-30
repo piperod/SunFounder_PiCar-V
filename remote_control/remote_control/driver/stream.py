@@ -24,10 +24,10 @@ VIDEO_PATH = "videos/"
 
 os.makedirs(VIDEO_PATH,exist_ok=True)
 
-SAVE_PATH = "/usr/local/lib/output_file.so -f" + VIDEO_PATH +"-d 1"
+SAVE_PATH = "/usr/local/lib/output_file.so -f " + VIDEO_PATH +" -d 1"
 OUTPUT_PATH = "/usr/local/lib/output_http.so -w /usr/local/www "
 
-stream_cmd = '%s -i "%s" -o "%s" -o "%s"&' % (MJPG_STREAMER_PATH, INPUT_PATH, OUTPUT_PATH,SAVE_PATH)
+stream_cmd = '%s -i "%s" -o "%s" -o "%s" &' % (MJPG_STREAMER_PATH, INPUT_PATH, OUTPUT_PATH,SAVE_PATH)
 
 def run_command(cmd):
 	with tempfile.TemporaryFile() as f:
